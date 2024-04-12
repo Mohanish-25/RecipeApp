@@ -29,7 +29,9 @@ export const SavedRecipes = () => {
             <div>
               <h2>{recipe.name}</h2>
             </div>
-            <p>{recipe.description}</p>
+            <p><b>Description: </b>{recipe.description}</p>
+            <p><b>Ingredients: </b>{recipe.ingredients.join(', ')}</p>
+            <p><b>Instructions: </b>{recipe.instructions}</p>
             <img src={recipe.imageUrl} alt={recipe.name} />
             <p>Cooking Time: {recipe.cookingTime} minutes</p>
           </li>
