@@ -1,8 +1,8 @@
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
-import { userRouter } from "./routes/users.js";
-import{recipesRouter} from "./routes/recipes.js";
+import { userRouter } from "./routes/user.js";
+import { recipesRouter } from "./routes/recipes.js";
 
 const app = express();
 
@@ -12,10 +12,8 @@ app.use(cors());
 app.use("/auth", userRouter);
 app.use("/recipes", recipesRouter);
 
-mongoose.connect("mongodb+srv://mohanishdesale:Kapil619@recipes.3rj1tqb.mongodb.net/?retryWrites=true&w=majority&appName=Recipes");
+mongoose.connect(
+  "mongodb+srv://mohanisdesale:Kapil619@recipeapp.gu5cacn.mongodb.net/?retryWrites=true&w=majority&appName=recipeApp"
+);
 
-
-app.listen(3001, () => console.log("SERVER STARTED")); 
-
-
-// I hope this commit works
+app.listen(3001, () => console.log("Server started"));
