@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 export const Navbar = () => {
@@ -12,14 +12,36 @@ export const Navbar = () => {
     navigate("/auth");
   };
   return (
-    <div className="navbar">
-      <Link to="/">Home</Link>
-      <Link to="/create-recipe">Create Recipe</Link>
-      <Link to="/saved-recipes">Saved Recipes</Link>
+    <div className="bg-green-500 hover:bg-green-800 text-white fixed w-full top-0 flex justify-between">
+      <NavLink
+        to="/"
+        className={({ isActive }) =>
+          isActive ? 'text-black hover:text-white' : 'hover:text-white'
+        }
+        end
+      >
+        Home
+      </NavLink>
+      <NavLink
+        to="/create-recipe"
+        className={({ isActive }) =>
+          isActive ? 'text-black hover:text-white' : 'hover:text-white'
+        }
+      >
+        Create Recipe
+      </NavLink>
+      <NavLink
+        to="/saved-recipes"
+        className={({ isActive }) =>
+          isActive ? 'text-black hover:text-white' : 'hover:text-white'
+        }
+      >
+        Saved Recipes
+      </NavLink>
       {!cookies.access_token ? (
-        <Link to="/auth">Login/Register</Link>
+        <NavLink className=" hover:text-white" to="/auth">Login/Register</NavLink>
       ) : (
-        <button className="logout-button" onClick={logout}> Logout </button>
+        <button className="text-1xl px-4 bg-green-900 hover:bg-red-700 text-white font-semibold rounded" onClick={logout}> Logout </button>
       )}
     </div>
   );
