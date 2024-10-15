@@ -20,23 +20,46 @@ export const SavedRecipes = () => {
 
     fetchSavedRecipes();
   }, []);
-  return (
 
-    <div className="flex flex-wrap justify-center p-4">
-      <h1 className="w-full text-center text-2xl mb-6">Saved Recipes</h1>
-      {savedRecipes.map((recipe) => (
-        <div key={recipe._id} className="max-w-sm rounded overflow-hidden shadow-lg m-4 bg-white">
-          <div className="w-full h-64 overflow-hidden">
-            <img className="w-full h-full object-cover" src={recipe.imageUrl} alt={recipe.name} />
-          </div>
-          <div className="px-6 py-4">
-            <div className="font-bold text-xl mb-2">{recipe.name}</div>
-            <p className="text-gray-700 text-base"><b>Description: </b>{recipe.description}</p>
-            <p className="text-gray-700 text-base"><b>Ingredients: </b>{recipe.ingredients.join(', ')}</p>
-            <p className="text-gray-700 text-base"><b>Instructions: </b>{recipe.instructions}</p>
-          </div>
-        </div>
-      ))}
+  return (
+    <div className="min-h-screen bg-gray-100 p-8">
+      <h1 className="text-4xl font-bold text-center text-green-700 mb-8">
+        Saved Recipes
+      </h1>
+      <div className="flex flex-wrap justify-center">
+        {savedRecipes.length === 0 ? (
+          <p className="text-xl text-gray-600">No saved recipes yet.</p>
+        ) : (
+          savedRecipes.map((recipe) => (
+            <div
+              key={recipe._id}
+              className="max-w-sm bg-white shadow-lg rounded-lg overflow-hidden m-4 transform hover:scale-105 transition-transform duration-300"
+            >
+              <div className="w-full h-64">
+                <img
+                  className="w-full h-full object-cover"
+                  src={recipe.imageUrl}
+                  alt={recipe.name}
+                />
+              </div>
+              <div className="px-6 py-4">
+                <h2 className="text-2xl font-bold text-green-800 mb-2">
+                  {recipe.name}
+                </h2>
+                <p className="text-gray-700 mb-2">
+                  <strong>Description:</strong> {recipe.description}
+                </p>
+                <p className="text-gray-700 mb-2">
+                  <strong>Ingredients:</strong> {recipe.ingredients.join(", ")}
+                </p>
+                <p className="text-gray-700">
+                  <strong>Instructions:</strong> {recipe.instructions}
+                </p>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
     </div>
   );
 };
