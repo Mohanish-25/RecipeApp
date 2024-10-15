@@ -59,10 +59,10 @@ export const Home = () => {
               className="w-full"
               src={recipe.imageUrl}
               alt={recipe.name}
-              // onError={(e) => {
-              //   e.target.onerror = null; // Prevents infinite loop if placeholder image also fails
-              //   e.target.src = "placeholder.png"; // Replace with your placeholder image URL
-              // }}
+              onError={(e) => {
+                e.target.onerror = null; // Prevents infinite loop if placeholder image also fails
+                e.target.src = "placeholder.png"; // Replace with your placeholder image URL
+              }}
             />
           </div>
           <div className="px-6 py-4">
